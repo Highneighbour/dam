@@ -1,0 +1,36 @@
+{
+  "name": "DAMM Honorary Fee Module Development",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/rust:1": {
+      "version": "latest",
+      "installRustup": false
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rust-lang.rust-analyzer",
+        "ms-vscode.vscode-json",
+        "esbenp.prettier-vscode"
+      ],
+      "settings": {
+        "rust-analyzer.check.command": "clippy",
+        "rust-analyzer.cargo.allFeatures": true
+      }
+    }
+  },
+  "postCreateCommand": "/workspace/scripts/setup-local.sh",
+  "forwardPorts": [8899],
+  "portsAttributes": {
+    "8899": {
+      "label": "Solana Local Validator"
+    }
+  },
+  "mounts": [
+    "source=${localWorkspaceFolder}/target,target=/workspace/target,type=volume"
+  ]
+}

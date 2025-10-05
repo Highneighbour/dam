@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Build dev container
+      run: docker build -t damm-honorary-dev .devcontainer/
+
+    - name: Run setup script in container
+      run: docker run --rm damm-honorary-dev /workspace/scripts/setup-local.sh
+
+    - name: Run tests in container
+      run: docker run --rm damm-honorary-dev /workspace/scripts/run-tests.sh
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Build dev container
+      run: docker build -t damm-honorary-dev .devcontainer/
+
+    - name: Run clippy in container
+      run: |
+        docker run --rm damm-honorary-dev bash -c "
+          cd programs/damm_honorary_fee && cargo clippy -- -D warnings
+        "
