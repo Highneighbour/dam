@@ -1,0 +1,16 @@
+[package]
+name = "damm_honorary_fee"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "damm_honorary_fee"
+
+[dependencies]
+anchor-lang = { workspace = true }
+anchor-spl = { workspace = true }
+thiserror = { workspace = true }
+bytemuck = { workspace = true }
+cp_amm_stub = { path = "../../mock_programs/cp_amm_stub", features = ["cpi"] }
+spl-token = { version = "3.5.0", package = "spl-token", features = ["no-entrypoint"] }

@@ -1,0 +1,16 @@
+[package]
+name = "cp_amm_stub"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "cp_amm_stub"
+
+[dependencies]
+anchor-lang = { workspace = true }
+anchor-spl = { workspace = true }
+
+[features]
+cpi = []
+no-entrypoint = []

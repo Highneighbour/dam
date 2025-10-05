@@ -1,0 +1,18 @@
+[features]
+seeds = true
+skip-lint = false
+
+[registry]
+url = "https://anchor.projectserum.com"
+
+[provider]
+cluster = "localnet"
+wallet = "~/.config/solana/id.json"
+
+[programs.localnet]
+damm_honorary_fee = "DHCtQhk3J4Y3GQxYbJAm1H1eVDqHvGkV8PH4YyC4NujG"
+streamflow_mock = "8Wx6m7J4R7dA9cC3G8h5o1bGQJV9oG8X5q7YwF2d3yY3"
+cp_amm_stub = "4L3s2v8u8k4iVwV3s6Zx8u9Q2pY3aG9fQ7wE6bN5mCk7"
+
+[scripts]
+test = "yarn mocha -t 1000000"

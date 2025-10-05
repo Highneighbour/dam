@@ -1,0 +1,10 @@
+{
+  "name": "damm-honorary-dev",
+  "dockerFile": "Dockerfile",
+  "context": "../",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+  ],
+  "postCreateCommand": "./scripts/setup-local.sh",
+  "remoteUser": "root"
+}

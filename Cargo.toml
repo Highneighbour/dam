@@ -1,0 +1,27 @@
+[workspace]
+resolver = "2"
+members = [
+  "programs/damm_honorary_fee",
+  "mock_programs/streamflow_mock",
+  "mock_programs/cp_amm_stub",
+]
+
+[workspace.package]
+edition = "2021"
+
+[workspace.dependencies]
+anchor-lang = "0.30.1"
+anchor-spl = "0.30.1"
+thiserror = "1.0"
+anyhow = "1.0"
+bytemuck = { version = "1.14", features = ["derive"] }
+
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = "s"
+
+[profile.dev]
+incremental = true
+opt-level = 1
+

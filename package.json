@@ -1,0 +1,15 @@
+{
+  "name": "damm-honorary-fee-module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "mocha -r ts-node/register 'tests/**/*.ts' -t 1000000"
+  },
+  "devDependencies": {
+    "@coral-xyz/anchor": "^0.30.1",
+    "chai": "^4.3.10",
+    "mocha": "^10.4.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
